@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyString
+  places: MyString
+  services: MyString
+  budget: 9.99
+  reg_date_ends: 2019-08-05 21:32:25
+  pickup_spots: MyString
+
+two:
+  title: MyString
+  description: MyString
+  places: MyString
+  services: MyString
+  budget: 9.99
+  reg_date_ends: 2019-08-05 21:32:25
+  pickup_spots: MyString

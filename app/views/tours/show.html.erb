@@ -1,0 +1,116 @@
+<div class="container">
+  <div class="row initail-row">
+    <div class="col s12" >
+      <div class="row">
+        <div class="col m5 s12" >
+          <% if @tour.images.any? %>
+          <%= image_tag @tour.images[0], class:"img-responsive img-wit" %>
+          <% end %>
+        </div>
+        <div class="col m7 s12">
+          <h4><%= @tour.title %></h4><span><i class="material-icons right share-btn">share</i></span>
+          <h6><strong>Budget:</strong> <%= @tour.budget %> Rs</h6><span><i class="material-icons right share-btn">thumb_up</i></span>
+          <div>
+            <p>Deadline: <%= @tour.reg_date_ends %></p><br/><span><i class="material-icons right share-btn">comment</i></span>
+          </div>
+
+           <div>
+            <p>Average Rating: <div class="review-rating" data-score="<%= @avg_rating %>" ></div>
+          </div>
+
+          <div>
+            <% if current_user.joined?(@tour) %>
+               <a class="waves-effect waves-light btn">joined</a>
+               <% else %>
+            <%= form_for(current_user.joinedtours.build) do |form| %>
+                <div>
+                  <%= hidden_field_tag(:tour_id, @tour.id) %>
+                  <%= form.submit 'Join', class: "btn waves-effect waves-light" %>
+                  </div>
+                <% end %>
+                <% end %>
+            
+
+                  <% if current_user.wishlisted?(@tour) %>
+                  <div class="btn waves-effect waves-light">Added To Wishlist</div>
+
+                  <% else %>
+                  <div>
+                  <%= form_for(current_user.wishlists.build) do |form| %>
+                <div>
+                  <%= hidden_field_tag(:tour_id, @tour.id) %>
+                  <%= form.submit 'Add To Wishlist', class: "btn waves-effect waves-light" %>
+                  </div>
+                <% end %>
+                  </div>
+                  <% end %>
+
+
+
+               </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12">
+          <h5 class="left-align"> Description</h5>
+          <p><%= @tour.description %></p>
+        </div>
+      </div>
+
+      <h4 class="left-align" >Images of the places</h4>
+          <% @tour.images.in_groups_of(3, false).each do |group| %>
+          <div class="row">
+            <% group.each do |image| %>
+        <div class="col s12 m3 sty">
+            <%= image_tag image, class:" img-wit materialboxed" %><span>  </span>
+        </div>
+        <% end %>
+      </div>
+      <% end %>
+
+       <div class="row">
+        <div class="col s12">
+          <h5 class="left-align"> Places</h5>
+          <p><%= @tour.places %></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12">
+          <h5 class="left-align"> Services</h5>
+          <p><%= @tour.services %></p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s12">
+          <h5 class="left-align"> Add Review</h5>
+          <%= render 'reviews/form' %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s12">
+          <h5 class="left-align"> Reviews</h5>
+          <% @reviews.each do |review| %>
+          <div class="review-rating" data-score="<%= review.rating %>" ></div>
+          "<%= review.comment %>" 
+          <br/>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+  $('.review-rating').raty({
+    readOnly: true,
+    score: function(){
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>

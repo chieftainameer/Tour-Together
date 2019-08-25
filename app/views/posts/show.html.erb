@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+		<div class="demo-name">
+	<%= @post.user.first_name %>
+    </div>
+  <%= @post.content %>
+  <% @post.images.each do |image| %>
+  <div class="row">
+  <%= image_tag image, style:"width:100px; height:100px", class: "materialboxed col m4" %>
+	</div>
+  <% end %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>

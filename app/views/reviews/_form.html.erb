@@ -1,0 +1,24 @@
+<h1>Add Reviews</h1>
+<%= form_for @review do |form| %>
+<%= form.hidden_field :tour_id, value: @tour.id %>
+  <div class="field">
+    <div id="rating-form">
+      
+    </div>
+  </div>  
+  <div class="input-field">
+    <%= form.text_field :comment %>
+    <%= form.label :comment %>
+  </div>
+  <div class="actions waves-effect waves-light btn">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<script> 
+  
+     $('#rating-form').raty({
+      path: '/assets/',
+      scoreName: 'review[rating]'
+     });
+</script>

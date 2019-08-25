@@ -1,0 +1,63 @@
+<p id="notice"><%= notice %></p>
+
+<div class="col s12 m7">
+    <h2 class="header center-align">Tours</h2>
+    <% @tours.each do |tour| %>
+    <%= link_to  tour_path(tour) do %>
+    <div class="card horizontal ">
+    <% if tour.images.any? %>
+      <div class="card-image hide-on-small-only">
+        <%= image_tag tour.images[0], class:"img-wit" %>
+      </div>
+      <% end %>
+      <div class="card-stacked center-align">
+        <span class="card-title tito"><%= tour.title %></span> <span><i class="material-icons right share-btn">share</i></span>
+        
+        <div class="card-content">
+          <p><%= tour.description %> </p>
+          <div>
+             <h5 class="left"><%= tour.budget %> Rs</h5>
+             <h5 class="right"><%= tour.reg_date_ends %></h5>
+          </div>
+          <% end %>
+        </div>
+
+        <div class="card-action">
+
+          <% if !current_user.wishlisted?(tour) %>
+
+          <%= link_to wishlists_path(tour_id: tour.id), method: :post do %>
+             <span class="badge"><i class="material-icons left marg">turned_in_not</i>14</span>
+          <% end %>
+
+          <% else %>
+             <span class="badge"><i class="material-icons left marg">turned_in</i>14</span>
+          <% end %>
+
+          <span class="badge"><i class="material-icons left prefix marg">comment</i><%= tour.reviews.count %></span>
+
+          <% if current_user.voted_for? tour %>
+
+          <%= link_to unlike_tour_path(tour), method: :put, remote: true do %>
+
+              <span class="badge"><i class="material-icons left ">favorite</i><%= tour.get_upvotes.size %></span>
+          
+          <% end %>
+
+          <% else %>
+
+          <%= link_to like_tour_path(tour), method: :put, remote: true do %>
+              <span class="badge"><i class="material-icons left ">favorite_border</i><%= tour.get_upvotes.size %></span>
+          <% end %>
+            
+          <% end %>
+        </div>
+        
+      </div>
+    </div>
+    
+  </div>
+  <% end %>
+<br>
+
+<%= link_to 'New Tour', new_tour_path %>

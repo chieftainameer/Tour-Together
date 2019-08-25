@@ -1,0 +1,92 @@
+<div class="row">
+  <div class=" col s12 col m6 center-align">
+    <div class="row">
+      <div class="col m6 offset-m3 s12">
+<%= form_with(model: tour, local: true) do |form| %>
+  <% if tour.errors.any? %>
+    <div id="error_explanation">
+      <h5><%= pluralize(tour.errors.count, "error") %> prohibited this tour from being saved:</h5>
+
+      <ul>
+      <% tour.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+</div>
+</div>
+  <div class="row">
+  <div class="input-field col s6 offset-s1 offset-m5">
+    <i class="material-icons prefix">local_offer</i>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+  </div>
+  <div class="row">
+  <div class="input-field col s8 offset-s1 offset-m5">
+    <i class="material-icons prefix">mode_edit</i>
+    <%= form.label :description %>
+    <%= form.text_area :description, class:"materialize-textarea" %>
+  </div>
+  </div>
+
+  <div class="row">
+  <div class="input-field col s6 offset-s1 offset-m5">
+    <i class="material-icons prefix">room</i>
+    <%= form.text_field :places %>
+    <%= form.label :places, class:"" %>
+  </div>
+
+  <div class="input-field col s6 offset-s1 offset-m5">
+    <i class="material-icons prefix">donut_small</i>
+    <%= form.text_field :services, class:"" %>
+     <%= form.label :services %>
+  </div>
+  </div>
+
+  <div class="row">
+  <div class="input-field col m4 col s8 offset-s1 offset-m5">
+    <i class="material-icons prefix">monetization_on</i>
+    <%= form.label :budget %>
+    <%= form.text_field :budget %>
+  </div>
+
+  <div class="input-field col m4 col s8 offset-s1 offset-m5">
+    <i class="material-icons prefix">date_ranger</i>
+    <%= form.date_field :reg_date_ends %>
+    <%= form.label :Deadline %>
+  </div>
+
+  <div class="input-field col m4 col s8 offset-s1 offset-m5">
+    <i class="material-icons prefix">drive_eta</i>
+    <%= form.label :pickup_spots %>
+    <%= form.text_field :pickup_spots, class:"" %>
+  </div>
+  </div>
+
+
+  <div class="row">
+  <div class="input-field col m4 col s8 offset-s1 offset-m5">
+   <div class="file-field input-field">
+    <div class="btn ">
+    <%= form.label :images, class:"black-text" %>
+    <%= form.file_field :images, multiple: true %>
+  </div>
+  <div class="file-path-wrapper" >
+    <%= form.text_field  class:"file-path validate", placeholder:"Upload one or more pictures" %>
+  </div>
+  </div>
+  </div>
+  </div>
+
+  
+
+  <div class="actions waves-effect waves-light btn offset-s3 offset-m6 ">
+    <%= form.submit %>
+  </div>   <div class="actions waves-effect waves-light btn offset-s3 offset-m6 ">
+    <%= link_to "Home Page", root_path %>
+  </div>
+<% end %>
+</div>
+</div>

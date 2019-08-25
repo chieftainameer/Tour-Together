@@ -1,0 +1,97 @@
+<h4 class="center-align">Update Info</h4>
+<div class="container">
+  <div class="row">
+    <div class="col s12 center-align">
+<%= form_for @user do |f| %>
+<div class="row">
+  <div class="input-field col m6">
+    <i class="material-icons prefix">account_circle</i>
+    <%= f.text_field :first_name, autofocus: true %>
+    <%= f.label "first Name" %><br />
+  </div>
+
+  <div class="input-field col m6">
+    <i class="material-icons prefix">assignment_ind</i>
+    <%= f.text_field :last_name %>
+    <%= f.label "Last Name" %><br />
+  </div>
+  </div>
+
+
+  <div class="row">
+  <div class="input-field col m6">
+    <i class="material-icons prefix">contact_mail</i>
+    <%= f.text_field :email %>
+    <%= f.label "Email" %><br />
+  </div>
+
+   <div class="input-field col m6">
+    <i class="material-icons prefix">phone</i>
+    <%= f.phone_field :phone %>
+    <%= f.label "Contact No" %><br />
+  </div>
+</div>
+
+  <div class="row" >
+    <div class="input-field col m4">
+    <i class="material-icons prefix">cake</i>
+    <%= f.text_field :dob_month %>
+    <%= f.label "Birth Month" %><br />
+  </div>
+
+  <div class="input-field col m4">
+    <i class="material-icons prefix">cake</i>
+    <%= f.text_field :dob_day %>
+    <%= f.label "Birth Day" %><br />
+  </div>
+
+  <div class="input-field col m4">
+    <i class="material-icons prefix">cake</i>
+    <%= f.text_field :dob_year %>
+    <%= f.label "Birth Year" %><br />
+  </div>
+  </div>
+
+ <div class="row">
+  <div class="input-field col m6 ">
+    <i class="material-icons prefix">screen_lock_landscape</i>
+    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+  </div>
+
+  <div class="input-field col m6 ">
+    <i class="material-icons prefix">lock_outline</i>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.label :"Confirm Password" %><br />
+  </div>
+  </div>
+
+   <div class="row">
+  <div class="input-field col m4 col s8 offset-s1 offset-m5">
+   <div class="file-field input-field">
+    <div class="btn ">
+    <%= f.label :profile, class:"black-text" %>
+    <%= f.file_field :profile%>
+  </div>
+  
+  </div>
+  </div>
+  </div>
+
+
+<div class="row">
+  <div class="col m12">
+    
+  <div class="actions waves-effect waves-light btn">
+    <%= f.submit "Update" %>
+  </div>  
+<% end %>
+
+</div>
+</div>
+</div>
+</div>
+</div>

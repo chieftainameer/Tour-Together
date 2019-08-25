@@ -1,0 +1,2 @@
+module JoinedtoursHelper
+end

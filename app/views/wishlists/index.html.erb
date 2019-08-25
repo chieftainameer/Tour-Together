@@ -1,0 +1,26 @@
+<h3 class="center-align">Your Wishlist</h3>
+<% @wishlists.each do |wishlisted| %>
+	<%= link_to  tour_path(wishlisted) do %>
+    <div class="card horizontal ">
+    <% if wishlisted.images.any? %>
+      <div class="card-image hide-on-small-only">
+        <%= image_tag wishlisted.images[0], class:"img-wit" %>
+      </div>
+      <% end %>
+      <div class="card-stacked center-align">
+        <span class="card-title tito"><%= wishlisted.title %></span> <span><i class="material-icons right share-btn">share</i></span>
+        
+        <div class="card-content">
+          <p><%= wishlisted.description %> </p>
+          <div>
+             <h5 class="left"><%= wishlisted.budget %> Rs</h5>
+             <p class="left">Budget</p>
+             <h5 class="right"><%= wishlisted.reg_date_ends %></h5>
+             <p class="right">Deadline</p>
+          </div>
+          <% end %>
+      </div>
+  </div>
+  </div>
+  </div>
+<% end %>

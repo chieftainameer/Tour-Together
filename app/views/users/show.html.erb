@@ -1,0 +1,42 @@
+<div class="row user-info">
+	<div class="col m6 offset-m1 s12">
+		<div class="row">
+		<div class="col m1" style="margin-top: 10px;">
+		<% if @user.profile.attachment.present? %>
+		<%= image_tag @user.profile, style:"width:70px;height:70px;border-radius:50%"  %>
+		<% else %>
+		<%= image_tag "img_avatar.png", style:"width:70px;height:70px;border-radius:50%;float:left"  %>
+		<% end %>
+		</div>
+		<div class="col m5 s12">
+		<h5 style="margin-left: 40px;"><%= @user.first_name %> <%= @user.last_name %></h5>
+		<p style="margin-left: 40px;margin-top: -10px">@<%= @user.first_name.downcase %></p>
+		</div>
+		</div>
+		<div class="row">
+			<div class="col m3">
+				<p>Followers <%= @user.followers.count %></p>
+			</div>
+			<div class="col m3">
+				<p class="right">Following <%= @user.following.count %></p>
+			</div> 
+		</div>
+		<div class="row ">
+			<div class="col m6 folow">
+				<% if current_user.followed? @user %>
+				<p><%= link_to 'UnFollow', relationship_path(@user,user_id: @user.id), method: :delete %></p>
+				<% else %>
+				<p><%= link_to 'Follow', relationships_path(user_id: @user.id), method: :post %></p>
+				<% end %>
+			</div>
+		</div>
+	</div>
+	<div class="col m5">
+		<h3>Posts</h3>
+		<% @posts.each do |post| %>
+		<p class="user-post"><%= truncate(post.content) %></p>
+		<% end %>
+		<%= will_paginate @posts %>
+	</div>
+</div>
+

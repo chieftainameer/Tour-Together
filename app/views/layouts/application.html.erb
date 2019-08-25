@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TourTogether</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application' %>
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      
+
+  </head>
+
+  <body>
+
+
+<div class="navbar-fixed">
+    <nav class="teal">
+      <div class="container">
+        <div class="nav-wrapper">
+          <a href="#!" class="brand-logo">Tour <span class="hide-on-small-only">Together</span></a>
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+           <ul class="right hide-on-med-and-down desktop-menu">
+            <% if user_signed_in? %>
+            <li>
+              <%= link_to 'Home', root_path %>
+            </li>
+            <li>
+              <%= link_to 'Tours', tours_path, class:' waves-effect waves-light' %>
+            </li>
+            
+            <li>
+              <%= link_to 'Users', users_path %>
+            </li>
+            <li>
+              <%= link_to 'Wishlist',  wishlists_path %>
+
+            </li>
+            <li>
+              <!-- Dropdown Trigger -->
+               <a class='dropdown-trigger' href='#' data-target='dropdown1'><%= current_user.first_name.capitalize %><i class="material-icons right">arrow_drop_down</i></a>
+
+  <!-- Dropdown Structure -->
+            <ul id='dropdown1' class='dropdown-content d-down'>
+                  <li><%= link_to current_user.first_name, user_path(current_user) %></li>
+                  <li><%= link_to 'Creat tour', new_tour_path %></li>
+                  <li class="divider" tabindex="-1"></li>
+                  <li><%= link_to 'Update profile', edit_user_path(current_user) %></li>
+                  <li><%=link_to 'Log out', logout_path %></li>
+            </ul>
+            </li>
+            
+
+              
+
+            <% else %>
+             <li>
+             </span><%= link_to 'Sign In', login_path %>
+            </li> 
+            <li>
+              <%= link_to 'Sign up', create_path %>            
+             </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <ul class="sidenav" id="mobile-demo">
+    <% if user_signed_in? %>
+    <li>
+      <%= link_to current_user.first_name, user_path(current_user) %>
+    </li>
+    <div class="divider" ></div>
+    <li>
+      <%= link_to 'Tours', tours_path %>
+    </li>
+    
+    <li>
+      <%= link_to 'Wislist', wishlists_path %>
+      
+    </li>
+    <li>
+      <%= link_to 'Users', users_path %>
+      
+    </li>
+    <div class="divider" ></div>
+     <li>
+      <%= link_to 'Create Tour', new_tour_path %>
+      
+    </li> 
+     <li>
+      <%= link_to 'Logout', logout_path %>
+      
+    </li>
+    <% else %>
+    <li>
+      <%= link_to 'Sign in', login_path %>
+    </li><li>
+      <%= link_to 'Sign up', create_path %>
+    </li>
+    <% end %>
+
+  </ul>
+
+    <%= yield %>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  </body>
+</html>

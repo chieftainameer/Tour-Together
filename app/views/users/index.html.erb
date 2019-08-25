@@ -1,0 +1,28 @@
+
+<h3>All users</h3>
+<% @users.in_groups_of(4, false).each do |group| %>
+<div class="row">
+  <% group.each do |user| %>
+  <%= link_to user_path(user) do %>
+	<div class="col m3 s12">
+  <div class="cardo">
+	<% if user.profile.attachment.present? %>
+  <%= image_tag user.profile, alt:"Avatar", style:"width:100%;height:300px" %>
+  <% else %>
+	<%= image_tag "img_avatar.png", alt:"Avatar", style:"width:100%; height:300px" %>
+  <% end %>
+  <div class="containero">
+    <h5 class="center-align"><%= user.first_name %> <%= user.last_name %></h5> 
+    <span>Followers <%= user.followers.count %></span> 
+    <span class="right">Following <%= user.following.count %></span> 
+    
+    <div class="followbtn">
+      <b>Follow</b>
+    </div>
+  </div>
+</div>
+</div>
+<% end %>
+<% end %>
+</div>
+<% end %>

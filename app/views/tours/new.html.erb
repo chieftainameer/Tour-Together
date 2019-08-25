@@ -1,0 +1,30 @@
+<h3 class="center-align">New Tour</h3>
+<% if current_user.paid? %>
+<%= render 'form', tour: @tour, class:"right" %>
+<% else %>
+<div class="container">
+	<div class="row">
+		<div class="col m6 offset-m3 s12">
+			<h2>Pay your one time dues to continue</h2>
+			<%= form_for @registration do |form| %>
+				<div class="field">
+					<%= form.label :full_name %>
+					<%= form.text_field :full_name %>
+				</div>
+				<div class="field">
+					<%= form.label :email %>
+					<%= form.email_field :email %>
+				</div>
+				<div class="field">
+					<%= form.label :telephone %>
+					<%= form.phone_field :telephone %>
+				</div>
+				<div class="actions">
+					<Script class="stripe-button" src="https://checkout.stripe.com/checkout.js" data-amount="10000*100" data-description="One Time Payment" data-key= <%= Rails.application.secrets.stripe_publishable_key %> ></Script>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>
+<% end %>
+<%= link_to 'Back', tours_path %>
