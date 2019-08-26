@@ -67,12 +67,12 @@ class ToursController < ApplicationController
 
   def upvote
     @tour.upvote_by current_user
-    render tours_path
+    redirect_to request.referrer
   end
 
   def downvote
     @tour.unliked_by current_user
-    redirect_to tours_path
+    redirect_to request.referrer
   end
 
   private

@@ -21,7 +21,9 @@ Rails.application.routes.draw do
   get 'create', to: 'devise/registrations#new'
   resources :users, only: [:index, :show, :edit, :update, :change_name] do
     member do
-      get 'change_name', to:"users#change_name"
+      get 'following', to: 'users#following'
+      get 'followers', to: 'users#followers'
+
     end
   end
 end  

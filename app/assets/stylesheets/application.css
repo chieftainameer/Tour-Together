@@ -145,3 +145,9 @@ ul.d-down li{
 	margin-top:0;
 	margin-left:10px;
 }
+ .action-bar{
+ 	height:60px;
+ 	background-color:white;
+ 	box-shadow: 1px;
+ 	width:50%;
+ }

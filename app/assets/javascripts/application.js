@@ -29,5 +29,9 @@
    	hover: true,
    	coverTrigger: false
    });
+
+   $('.comment-btn').click(function(){
+    $('.comment-inp').toggle();
+   });
    
   });

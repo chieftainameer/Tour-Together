@@ -26,7 +26,7 @@ class User < ApplicationRecord
          has_many :following, through: :active_relationships, source: :followed
 
          ###
-         before_save :email_downcase
+         before_save :email_down
          VALID_REGEX_VALUE = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
     validates :first_name, presence: true, length: { maximum: 50 }
     validates :profile, presence: true

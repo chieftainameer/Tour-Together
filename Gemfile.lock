@@ -73,6 +73,7 @@ GEM
     bootsnap (1.4.4)
       msgpack (~> 1.0)
     builder (3.2.3)
+    bulma (0.1.0)
     byebug (11.0.1)
     cancan (1.6.10)
     capybara (3.28.0)
@@ -239,6 +240,7 @@ DEPENDENCIES
   actiontext!
   acts_as_votable
   bootsnap (>= 1.1.0)
+  bulma
   byebug
   cancan
   capybara (>= 2.15)

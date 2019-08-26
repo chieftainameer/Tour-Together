@@ -31,6 +31,7 @@ gem 'acts_as_votable'
 gem 'stripe'
 gem 'cancan'
 gem 'will_paginate'
+gem 'bulma'
 
 
 # Use Redis adapter to run Action Cable in production

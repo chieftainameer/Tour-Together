@@ -36,7 +36,7 @@
 
             <div class="row">
               <div class="col m12 offset-m2 offset-s2">
-                <p class="cntent">heejkj hjh hj uiyuig giy tr y uuiiiiyi y7uyt</p>
+                <p class="cntent"><%= feed_item.content %></p>
               </div>
             </div>
 
@@ -45,13 +45,21 @@
             <div class="row">
               <% group.each do |image| %>
               <div class="col m12 offset-m2 offset-s2">
-                <%= image_tag image, style:"width:150px;height:150px" %>
+                <%= image_tag image, style:"width:150px;height:150px", class:"materialboxed" %>
               </div>
             <% end %>
 
             </div>
             <% end %>
-            <% end %>
+            <% end %><hr/>
+            <div class="row action-bar">
+              <div class="col m1 s1 offset-m2"><i class="material-icons">favorite_border</i></div>
+              <div class="col m3 s1 offset-m2 comment-btn"><i class="material-icons">comment</i></div>
+              <div class="col m3 s1">lello</div>
+            </div>
+            <div class="row comment-inp" style="display:none">
+              <input type="text" name="comment">
+            </div>
 
       </div>
         <% end %>

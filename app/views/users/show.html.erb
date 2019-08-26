@@ -15,10 +15,10 @@
 		</div>
 		<div class="row">
 			<div class="col m3">
-				<p>Followers <%= @user.followers.count %></p>
+				<p><%= link_to followers_user_path(@user) do %>Followers <%= @user.followers.count %><% end %></p>
 			</div>
 			<div class="col m3">
-				<p class="right">Following <%= @user.following.count %></p>
+				<p class="right"><%= link_to following_user_path(@user) %>Following <%= @user.following.count %><% end %></p>
 			</div> 
 		</div>
 		<div class="row ">
