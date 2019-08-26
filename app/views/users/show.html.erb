@@ -18,7 +18,7 @@
 				<p><%= link_to followers_user_path(@user) do %>Followers <%= @user.followers.count %><% end %></p>
 			</div>
 			<div class="col m3">
-				<p class="right"><%= link_to following_user_path(@user) %>Following <%= @user.following.count %><% end %></p>
+				<p class="right"><%= link_to following_user_path(@user) do %>Following <%= @user.following.count %><% end %></p>
 			</div> 
 		</div>
 		<div class="row ">

@@ -2,7 +2,7 @@ class WishlistsController < ApplicationController
 	before_action :authenticate_user!
 
 	def index
-		@wishlists = current_user.wishlisted_tours.order(created_at: :desc)
+		@wishlists = current_user.wishlisted_tours.order(created_at: :desc).paginate(page: params[:page], per_page: 10)
 	end
 
 	def create
